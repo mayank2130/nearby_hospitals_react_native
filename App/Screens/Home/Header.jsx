@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import GlobalApi from "../../Utils/GlobalApi";
 
 export default function Header({ searchedLocation }) {
   return (
@@ -13,7 +14,7 @@ export default function Header({ searchedLocation }) {
           searchedLocation(details?.geometry?.location);
         }}
         query={{
-          key: "AIzaSyBVKa4xAyXkD0s96quLqKEehfk5-HEs7O0",
+          key: GlobalApi.API_KEY,
           language: "en",
         }}
       />
