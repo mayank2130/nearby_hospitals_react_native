@@ -2,9 +2,7 @@ import axios from "axios";
 
 const BASE_URL = " https://places.googleapis.com/v1/places:searchNearby";
 
-{/*  waiting for google approval to create map api keys */}
-
-const API_KEY = "api_key";
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const config = {
   headers: {

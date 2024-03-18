@@ -15,18 +15,16 @@ export default function PlaceItem({ place }) {
       }}
     >
       <Image
-        source={
-          place?.photo
-            ? {
-                uri:
-                  PLACE_PHOTO_BASE_URL +
-                  place.photos[0]?.name +
-                  "/media?.png=" +
-                  GlobalApi.API_KEY +
-                  "&maxHeightPx=800&maxWidthPx=1200",
-              }
-            : require("../../../assets/hospital.png")
-        }
+        source={{
+          uri:
+            place?.photo?.length > 0
+              ? PLACE_PHOTO_BASE_URL +
+                place.photos[0]?.name +
+                "/media?.png=" +
+                GlobalApi.API_KEY +
+                "&maxHeightPx=800&maxWidthPx=1200"
+              : require("../../../assets/hospital.png"),
+        }}
         style={{ width: "100%", borderRadius: 10, height: 160 }}
       />
       <View style={{ padding: 15 }}>

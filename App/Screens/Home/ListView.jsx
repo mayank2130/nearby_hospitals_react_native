@@ -3,9 +3,13 @@ import React, { useContext, useEffect, useRef } from "react";
 import PlaceItem from "./PlaceItem";
 import { SelectMarkerContext } from "../../Context/SelectedMarkerContext";
 
-export default function ListView({ list }) {
+export default function ListView({ placeList }) {
   const flatListRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useContext(SelectMarkerContext);
+
+  if (placeList.length === 0) {
+    return <Text>No places found</Text>;
+  }
 
   useEffect(() => {
     selectedMarker && scrollToIndex(selectedMarker);
@@ -24,7 +28,7 @@ export default function ListView({ list }) {
   return (
     <View>
       <FlatList
-        data={list}
+        data={placeList}
         ref={flatListRef}
         getItemLayout={getItemLayout}
         pagingEnabled

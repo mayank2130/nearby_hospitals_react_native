@@ -9,8 +9,8 @@ import { SelectMarkerContext } from "../../Context/SelectedMarkerContext";
 
 export default function HomeScreen() {
   const { location, setLocation } = useContext(UserLocationContext);
-  const [list, setList] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState([]);
+  const [placeList, setPlaceList] = useState([]);
 
   useEffect(() => {
     location && getNearByPlace();
@@ -33,7 +33,7 @@ export default function HomeScreen() {
 
     GlobalApi.NewNearByPlace(data).then((response) => {
       console.log(response.data);
-      setList(response.data?.places);
+      setPlaceList(response.data?.places);
     });
   };
   return (
@@ -52,11 +52,9 @@ export default function HomeScreen() {
               }
             />
           </View>
-          {/*  list will be empty cause of google api key not yet available  */}
-          {list && <AppMapView list={list} />}
+          {placeList && <AppMapView placeList={placeList} />}
           <View style={styles.listContainer}>
-            {/*  list will be empty cause of google api key not yet available  */}
-            {list && <ListView list={list} />}
+            {placeList && <ListView placeList={placeList} />}
           </View>
         </View>
       </SelectMarkerContext.Provider>

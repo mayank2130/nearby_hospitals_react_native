@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import React, { useContext } from "react";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { UserLocationContext } from "../../Context/UserLocationContext";
 import Markers from "./Markers";
 
-export default function AppMapView({ list }) {
+export default function AppMapView({ placeList }) {
   const { location, setLocation } = useContext(UserLocationContext);
 
   return (
@@ -30,8 +30,11 @@ export default function AppMapView({ list }) {
             ></Marker>
           ) : null}
 
-          {list &&
-            list.map((item, index) => <Markers index={index} key={index} place={item} />)}
+          <FlatList
+            data={placeList}
+            renderItem={({ item }) => <Markers place={item} />}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </MapView>
       </View>
     )
