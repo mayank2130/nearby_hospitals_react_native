@@ -14,7 +14,20 @@ export default function PlaceItem({ place }) {
         width: Dimensions.get("screen").width * 0.9,
       }}
     >
+      {/* <Image
+        source={{
+          uri:
+            place?.photo?.length > 0 && place.photos[0]?.name
+              ? `${PLACE_PHOTO_BASE_URL}${place.photos[0]?.name}/media?.png=${GlobalApi.API_KEY}&maxHeightPx=800&maxWidthPx=1200`
+              : require("../../../assets/hospital.png"),
+        }}
+        style={{ width: "100%", borderRadius: 10, height: 160 }}
+      /> */}
       <Image
+        source={require("../../../assets/hospital.png")}
+        style={{ width: "100%", borderRadius: 10, height: 160 }}
+      />
+      {/* <Image
         source={{
           uri:
             place?.photo?.length > 0
@@ -26,7 +39,7 @@ export default function PlaceItem({ place }) {
               : require("../../../assets/hospital.png"),
         }}
         style={{ width: "100%", borderRadius: 10, height: 160 }}
-      />
+      /> */}
       <View style={{ padding: 15 }}>
         <Text style={{ fontSize: 18 }}>{place.displayName?.text}</Text>
         <Text>{place?.shortFormattedAddress?.text}</Text>

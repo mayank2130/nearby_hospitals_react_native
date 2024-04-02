@@ -4,7 +4,7 @@ import { Marker } from "react-native-maps";
 import { SelectMarkerContext } from "../../Context/SelectedMarkerContext";
 
 const Markers = ({ place, index }) => {
-  const [selectedMarker, setSelectedMarker] = useContext(SelectMarkerContext);
+  const {selectedMarker, setSelectedMarker} = useContext(SelectMarkerContext);
 
   return (
     <Marker

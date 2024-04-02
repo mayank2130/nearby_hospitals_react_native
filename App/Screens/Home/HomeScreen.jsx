@@ -31,11 +31,16 @@ export default function HomeScreen() {
       },
     };
 
-    GlobalApi.NewNearByPlace(data).then((response) => {
-      console.log(response.data);
-      setPlaceList(response.data?.places);
-    });
+    GlobalApi.NewNearByPlace(data)
+      .then((response) => {
+        console.log("Axios Response:", response);
+        setPlaceList(response?.places);
+      })
+      .catch((error) => {
+        console.error("Error fetching nearby places:", error);
+      });
   };
+
   return (
     <>
       <SelectMarkerContext.Provider
@@ -75,6 +80,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     position: "absolute",
-    bottom: 0,
+    top: 520,
   },
 });
